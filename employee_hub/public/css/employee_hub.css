@@ -1,0 +1,52 @@
+/*
+ * Employee Hub - Custom Status Badge and Indicator Styles
+ */
+
+/* Indicator badges for Employee Status */
+.indicator-pill.active,
+.badge-status-active {
+    background-color: #def7ec !important;
+    color: #03543f !important;
+    border: 1px solid #bcf0da !important;
+    font-weight: 600;
+    padding: 3px 8px;
+    border-radius: 12px;
+}
+
+.indicator-pill.on-leave,
+.badge-status-on-leave {
+    background-color: #feecdc !important;
+    color: #9f580a !important;
+    border: 1px solid #fbd5c0 !important;
+    font-weight: 600;
+    padding: 3px 8px;
+    border-radius: 12px;
+}
+
+.indicator-pill.inactive,
+.badge-status-inactive {
+    background-color: #f3f4f6 !important;
+    color: #4b5563 !important;
+    border: 1px solid #e5e7eb !important;
+    font-weight: 600;
+    padding: 3px 8px;
+    border-radius: 12px;
+}
+
+.indicator-pill.terminated,
+.badge-status-terminated {
+    background-color: #fde8e8 !important;
+    color: #9b1c1c !important;
+    border: 1px solid #f8b4b4 !important;
+    font-weight: 600;
+    padding: 3px 8px;
+    border-radius: 12px;
+}
+
+/* Form Headline status banner */
+.employee-status-headline {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+}

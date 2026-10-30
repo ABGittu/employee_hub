@@ -1,0 +1,20 @@
+[build-system]
+requires = ["flit_core >=3.4,<4"]
+build-backend = "flit_core.buildapi"
+
+[project]
+name = "employee_hub"
+authors = [
+    { name = "Sanskar Trainee", email = "trainee@sanskar.io"}
+]
+description = "Employee Hub System - Comprehensive HR & Leave Management Frappe App"
+requires-python = ">=3.12"
+readme = "README.md"
+dynamic = ["version"]
+dependencies = []
+
+[tool.flit.sdist]
+exclude = [
+    "*.pyc",
+    ".git*",
+]

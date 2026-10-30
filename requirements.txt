@@ -1,0 +1,2 @@
+# Python dependencies for Employee Hub
+# Core frappe framework is provided by the bench environment
