@@ -1,0 +1,178 @@
+{
+  "charts": [
+    {
+      "chart_name": "Department Wise Employee Strength",
+      "label": "Department Wise Employee Strength"
+    },
+    {
+      "chart_name": "Employees by Department",
+      "label": "Employees by Department"
+    },
+    {
+      "chart_name": "Leave Requests by Status",
+      "label": "Leave Requests by Status"
+    }
+  ],
+  "content": "[{\"id\":\"header_1\",\"type\":\"header\",\"data\":{\"text\":\"Employee Hub HR Dashboard\",\"level\":2}},{\"id\":\"card_total\",\"type\":\"number_card\",\"data\":{\"card_name\":\"Total Employees\"}},{\"id\":\"card_active\",\"type\":\"number_card\",\"data\":{\"card_name\":\"Active Employees\"}},{\"id\":\"card_leaves\",\"type\":\"number_card\",\"data\":{\"card_name\":\"Pending Leave Requests\"}},{\"id\":\"card_onleave\",\"type\":\"number_card\",\"data\":{\"card_name\":\"Employees On Leave\"}},{\"id\":\"header_charts\",\"type\":\"header\",\"data\":{\"text\":\"Analytics & Visualizations\",\"level\":3}},{\"id\":\"chart_bar\",\"type\":\"chart\",\"data\":{\"chart_name\":\"Department Wise Employee Strength\"}},{\"id\":\"chart_dept\",\"type\":\"chart\",\"data\":{\"chart_name\":\"Employees by Department\"}},{\"id\":\"chart_leaves\",\"type\":\"chart\",\"data\":{\"chart_name\":\"Leave Requests by Status\"}},{\"id\":\"header_quick\",\"type\":\"header\",\"data\":{\"text\":\"Quick Navigation & Shortcuts\",\"level\":3}},{\"id\":\"sc_emp\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Employee Directory\"}},{\"id\":\"sc_leave\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Leave Requests\"}},{\"id\":\"sc_dept\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Departments\"}},{\"id\":\"sc_desig\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Designations\"}},{\"id\":\"sc_skill\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Skills\"}},{\"id\":\"sc_config\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Leave Configuration\"}},{\"id\":\"sc_report\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Department Summary Report\"}}]",
+  "creation": "2026-10-29 10:00:00.000000",
+  "custom_blocks": [],
+  "docstatus": 0,
+  "doctype": "Workspace",
+  "for_user": "",
+  "hide_custom": 0,
+  "icon": "users",
+  "indicator_color": "blue",
+  "is_hidden": 0,
+  "is_standard": 1,
+  "label": "Employee Hub",
+  "type": "Workspace",
+  "links": [
+    {
+      "hidden": 0,
+      "is_query_report": 0,
+      "label": "Employee Directory",
+      "link_count": 0,
+      "link_to": "Employee",
+      "link_type": "DocType",
+      "onboard": 0,
+      "type": "Link"
+    },
+    {
+      "hidden": 0,
+      "is_query_report": 0,
+      "label": "Leave Requests",
+      "link_count": 0,
+      "link_to": "Leave Request",
+      "link_type": "DocType",
+      "onboard": 0,
+      "type": "Link"
+    },
+    {
+      "hidden": 0,
+      "is_query_report": 0,
+      "label": "Leave Configuration",
+      "link_count": 0,
+      "link_to": "Leave Configuration",
+      "link_type": "DocType",
+      "onboard": 0,
+      "type": "Link"
+    },
+    {
+      "hidden": 0,
+      "is_query_report": 0,
+      "label": "Departments",
+      "link_count": 0,
+      "link_to": "Department",
+      "link_type": "DocType",
+      "onboard": 0,
+      "type": "Link"
+    },
+    {
+      "hidden": 0,
+      "is_query_report": 0,
+      "label": "Designations",
+      "link_count": 0,
+      "link_to": "Designation",
+      "link_type": "DocType",
+      "onboard": 0,
+      "type": "Link"
+    },
+    {
+      "hidden": 0,
+      "is_query_report": 0,
+      "label": "Skills",
+      "link_count": 0,
+      "link_to": "Skill",
+      "link_type": "DocType",
+      "onboard": 0,
+      "type": "Link"
+    },
+    {
+      "hidden": 0,
+      "is_query_report": 1,
+      "label": "Department Summary Report",
+      "link_count": 0,
+      "link_to": "Department Wise Employee Summary",
+      "link_type": "Report",
+      "onboard": 0,
+      "type": "Link"
+    }
+  ],
+  "modified": "2026-10-29 10:00:00.000000",
+  "modified_by": "Administrator",
+  "module": "Employee Hub",
+  "name": "Employee Hub",
+  "number_cards": [
+    {
+      "label": "Total Employees",
+      "number_card_name": "Total Employees"
+    },
+    {
+      "label": "Active Employees",
+      "number_card_name": "Active Employees"
+    },
+    {
+      "label": "Pending Leave Requests",
+      "number_card_name": "Pending Leave Requests"
+    },
+    {
+      "label": "Employees On Leave",
+      "number_card_name": "Employees On Leave"
+    }
+  ],
+  "owner": "Administrator",
+  "public": 1,
+  "quick_lists": [],
+  "roles": [],
+  "sequence_id": 1.0,
+  "shortcuts": [
+    {
+      "color": "Grey",
+      "doc_view": "List",
+      "label": "Employee Directory",
+      "link_to": "Employee",
+      "type": "DocType"
+    },
+    {
+      "color": "Orange",
+      "doc_view": "List",
+      "label": "Leave Requests",
+      "link_to": "Leave Request",
+      "type": "DocType"
+    },
+    {
+      "color": "Blue",
+      "doc_view": "List",
+      "label": "Departments",
+      "link_to": "Department",
+      "type": "DocType"
+    },
+    {
+      "color": "Green",
+      "doc_view": "List",
+      "label": "Designations",
+      "link_to": "Designation",
+      "type": "DocType"
+    },
+    {
+      "color": "Yellow",
+      "doc_view": "List",
+      "label": "Skills",
+      "link_to": "Skill",
+      "type": "DocType"
+    },
+    {
+      "color": "Purple",
+      "label": "Leave Configuration",
+      "link_to": "Leave Configuration",
+      "type": "DocType"
+    },
+    {
+      "color": "Cyan",
+      "label": "Department Summary Report",
+      "link_to": "Department Wise Employee Summary",
+      "type": "Report"
+    }
+  ],
+  "title": "Employee Hub"
+}

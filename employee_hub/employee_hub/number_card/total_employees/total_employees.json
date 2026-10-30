@@ -1,0 +1,23 @@
+{
+ "color": "#3b82f6",
+ "creation": "2026-10-29 12:28:23.762567",
+ "currency": "INR",
+ "docstatus": 0,
+ "doctype": "Number Card",
+ "document_type": "Employee",
+ "function": "Count",
+ "idx": 0,
+ "is_public": 0,
+ "is_standard": 1,
+ "label": "Total Employees",
+ "modified": "2026-10-29 12:28:23.762567",
+ "modified_by": "Administrator",
+ "module": "Employee Hub",
+ "name": "Total Employees",
+ "owner": "Administrator",
+ "report_function": "Sum",
+ "show_full_number": 0,
+ "show_percentage_stats": 1,
+ "stats_time_interval": "Daily",
+ "type": "Document Type"
+}

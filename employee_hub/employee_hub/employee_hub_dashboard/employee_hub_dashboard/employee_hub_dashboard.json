@@ -1,0 +1,42 @@
+{
+ "cards": [
+  {
+   "card": "Total Employees"
+  },
+  {
+   "card": "Active Employees"
+  },
+  {
+   "card": "Pending Leave Requests"
+  },
+  {
+   "card": "Employees On Leave"
+  }
+ ],
+ "charts": [
+  {
+   "chart": "Department Wise Employee Strength",
+   "width": "Full"
+  },
+  {
+   "chart": "Employees by Department",
+   "width": "Half"
+  },
+  {
+   "chart": "Leave Requests by Status",
+   "width": "Half"
+  }
+ ],
+ "creation": "2026-10-29 12:39:26.071717",
+ "dashboard_name": "Employee Hub Dashboard",
+ "docstatus": 0,
+ "doctype": "Dashboard",
+ "idx": 0,
+ "is_default": 0,
+ "is_standard": 1,
+ "modified": "2026-10-30 11:18:40.445340",
+ "modified_by": "Administrator",
+ "module": "Employee Hub",
+ "name": "Employee Hub Dashboard",
+ "owner": "Administrator"
+}
