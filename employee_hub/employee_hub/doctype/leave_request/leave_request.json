@@ -1,0 +1,227 @@
+{
+  "actions": [],
+  "allow_rename": 0,
+  "autoname": "naming_series:",
+  "creation": "2026-10-29 10:00:00.000000",
+  "doctype": "DocType",
+  "engine": "InnoDB",
+  "field_order": [
+    "request_details_section",
+    "naming_series",
+    "employee",
+    "employee_name",
+    "col_break_1",
+    "department",
+    "leave_type",
+    "approval_status",
+    "dates_section",
+    "from_date",
+    "to_date",
+    "col_break_2",
+    "total_days",
+    "reason_section",
+    "reason",
+    "approval_section",
+    "approved_by",
+    "approval_date",
+    "col_break_3",
+    "rejection_reason"
+  ],
+  "fields": [
+    {
+      "fieldname": "request_details_section",
+      "fieldtype": "Section Break",
+      "label": "Leave Request Details"
+    },
+    {
+      "default": "LR-.YYYY.-.#####",
+      "fieldname": "naming_series",
+      "fieldtype": "Select",
+      "label": "Series",
+      "no_copy": 1,
+      "options": "LR-.YYYY.-.#####",
+      "reqd": 1,
+      "set_only_once": 1
+    },
+    {
+      "fieldname": "employee",
+      "fieldtype": "Link",
+      "in_list_view": 1,
+      "in_standard_filter": 1,
+      "label": "Employee",
+      "options": "Employee",
+      "reqd": 1
+    },
+    {
+      "fetch_from": "employee.full_name",
+      "fieldname": "employee_name",
+      "fieldtype": "Data",
+      "in_list_view": 1,
+      "label": "Employee Name",
+      "read_only": 1
+    },
+    {
+      "fieldname": "col_break_1",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fetch_from": "employee.department",
+      "fieldname": "department",
+      "fieldtype": "Link",
+      "in_list_view": 1,
+      "in_standard_filter": 1,
+      "label": "Department",
+      "options": "Department",
+      "read_only": 1
+    },
+    {
+      "fieldname": "leave_type",
+      "fieldtype": "Select",
+      "in_list_view": 1,
+      "in_standard_filter": 1,
+      "label": "Leave Type",
+      "options": "Casual Leave\nSick Leave\nEarned Leave\nCompensatory Leave",
+      "reqd": 1
+    },
+    {
+      "default": "Pending",
+      "fieldname": "approval_status",
+      "fieldtype": "Select",
+      "in_list_view": 1,
+      "in_standard_filter": 1,
+      "label": "Approval Status",
+      "no_copy": 1,
+      "options": "Pending\nApproved\nRejected\nCancelled",
+      "read_only": 1
+    },
+    {
+      "fieldname": "dates_section",
+      "fieldtype": "Section Break",
+      "label": "Leave Duration"
+    },
+    {
+      "fieldname": "from_date",
+      "fieldtype": "Date",
+      "in_list_view": 1,
+      "label": "From Date",
+      "reqd": 1
+    },
+    {
+      "fieldname": "to_date",
+      "fieldtype": "Date",
+      "in_list_view": 1,
+      "label": "To Date",
+      "reqd": 1
+    },
+    {
+      "fieldname": "col_break_2",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "total_days",
+      "fieldtype": "Float",
+      "in_list_view": 1,
+      "label": "Total Days",
+      "read_only": 1
+    },
+    {
+      "fieldname": "reason_section",
+      "fieldtype": "Section Break",
+      "label": "Reason for Leave"
+    },
+    {
+      "fieldname": "reason",
+      "fieldtype": "Text",
+      "label": "Reason",
+      "reqd": 1
+    },
+    {
+      "fieldname": "approval_section",
+      "fieldtype": "Section Break",
+      "label": "Approval Audit"
+    },
+    {
+      "fieldname": "approved_by",
+      "fieldtype": "Link",
+      "label": "Approved By",
+      "no_copy": 1,
+      "options": "User",
+      "read_only": 1
+    },
+    {
+      "fieldname": "approval_date",
+      "fieldtype": "Datetime",
+      "label": "Approval Date",
+      "no_copy": 1,
+      "read_only": 1
+    },
+    {
+      "fieldname": "col_break_3",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "rejection_reason",
+      "fieldtype": "Small Text",
+      "label": "Rejection / Cancellation Reason"
+    }
+  ],
+  "is_submittable": 1,
+  "links": [],
+  "modified": "2026-10-29 10:00:00.000000",
+  "modified_by": "Administrator",
+  "module": "Employee Hub",
+  "name": "Leave Request",
+  "naming_rule": "By \"Naming Series\" field",
+  "owner": "Administrator",
+  "permissions": [
+    {
+      "cancel": 1,
+      "create": 1,
+      "delete": 1,
+      "email": 1,
+      "export": 1,
+      "print": 1,
+      "read": 1,
+      "report": 1,
+      "role": "System Manager",
+      "share": 1,
+      "submit": 1,
+      "write": 1
+    },
+    {
+      "cancel": 1,
+      "create": 1,
+      "delete": 1,
+      "email": 1,
+      "export": 1,
+      "print": 1,
+      "read": 1,
+      "report": 1,
+      "role": "HR Admin",
+      "share": 1,
+      "submit": 1,
+      "write": 1
+    },
+    {
+      "cancel": 0,
+      "create": 1,
+      "delete": 0,
+      "email": 1,
+      "export": 0,
+      "if_owner": 1,
+      "print": 1,
+      "read": 1,
+      "report": 1,
+      "role": "Employee",
+      "share": 0,
+      "submit": 0,
+      "write": 1
+    }
+  ],
+  "search_fields": "employee,employee_name,leave_type,approval_status",
+  "sort_field": "modified",
+  "sort_order": "DESC",
+  "states": [],
+  "title_field": "employee_name",
+  "track_changes": 1
+}

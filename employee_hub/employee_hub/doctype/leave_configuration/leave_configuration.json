@@ -1,0 +1,102 @@
+{
+  "actions": [],
+  "creation": "2026-10-29 10:00:00.000000",
+  "doctype": "DocType",
+  "engine": "InnoDB",
+  "field_order": [
+    "leave_limits_section",
+    "default_annual_balance",
+    "max_leave_days_per_request",
+    "allow_backdated_leave",
+    "col_break_limits",
+    "max_casual_leave",
+    "max_sick_leave",
+    "max_earned_leave"
+  ],
+  "fields": [
+    {
+      "fieldname": "leave_limits_section",
+      "fieldtype": "Section Break",
+      "label": "Leave Policy & Limits"
+    },
+    {
+      "default": "24",
+      "description": "Initial annual balance allocated to employees",
+      "fieldname": "default_annual_balance",
+      "fieldtype": "Int",
+      "label": "Default Annual Balance"
+    },
+    {
+      "default": "15",
+      "description": "Maximum number of days allowed in a single leave application",
+      "fieldname": "max_leave_days_per_request",
+      "fieldtype": "Int",
+      "label": "Max Leave Days Per Request"
+    },
+    {
+      "default": "0",
+      "description": "Allow employees to apply for leave on past dates",
+      "fieldname": "allow_backdated_leave",
+      "fieldtype": "Check",
+      "label": "Allow Backdated Leave"
+    },
+    {
+      "fieldname": "col_break_limits",
+      "fieldtype": "Column Break"
+    },
+    {
+      "default": "12",
+      "fieldname": "max_casual_leave",
+      "fieldtype": "Int",
+      "label": "Max Casual Leave"
+    },
+    {
+      "default": "6",
+      "fieldname": "max_sick_leave",
+      "fieldtype": "Int",
+      "label": "Max Sick Leave"
+    },
+    {
+      "default": "15",
+      "fieldname": "max_earned_leave",
+      "fieldtype": "Int",
+      "label": "Max Earned Leave"
+    }
+  ],
+  "issingle": 1,
+  "links": [],
+  "modified": "2026-10-29 10:00:00.000000",
+  "modified_by": "Administrator",
+  "module": "Employee Hub",
+  "name": "Leave Configuration",
+  "owner": "Administrator",
+  "permissions": [
+    {
+      "create": 1,
+      "delete": 0,
+      "email": 1,
+      "print": 1,
+      "read": 1,
+      "role": "System Manager",
+      "share": 1,
+      "write": 1
+    },
+    {
+      "create": 1,
+      "delete": 0,
+      "email": 1,
+      "print": 1,
+      "read": 1,
+      "role": "HR Admin",
+      "share": 1,
+      "write": 1
+    },
+    {
+      "read": 1,
+      "role": "Employee"
+    }
+  ],
+  "sort_field": "modified",
+  "sort_order": "DESC",
+  "states": []
+}
