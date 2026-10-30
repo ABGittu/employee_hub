@@ -19,6 +19,14 @@
    "width": "Full"
   },
   {
+   "chart": "Leave Requests by Type",
+   "width": "Half"
+  },
+  {
+   "chart": "Employees by Designation",
+   "width": "Half"
+  },
+  {
    "chart": "Employees by Department",
    "width": "Half"
   },
@@ -34,7 +42,7 @@
  "idx": 0,
  "is_default": 0,
  "is_standard": 1,
- "modified": "2026-10-30 11:18:40.445340",
+ "modified": "2026-10-30 11:36:02.456806",
  "modified_by": "Administrator",
  "module": "Employee Hub",
  "name": "Employee Hub Dashboard",

@@ -62,6 +62,7 @@ Employee Hub System/
     ├── patches.txt                               # Patch registry
     │
     ├── setup_sample_data.py                      # Seeding script for assessment data
+    ├── test_verification.py                      # Automated test suite (isolation, workflow, PDF, charts)
     │
     ├── public/                                   # Client-side static assets
     │   ├── css/
@@ -106,6 +107,13 @@ Employee Hub System/
         │       ├── leave_request.json            # Submittable schema, own-record rule
         │       ├── leave_request.py              # Balance checks, overlap prevention, submit/cancel, validation
         │       └── leave_request.js              # Balance intro, days calculation, before_workflow_action confirm/prompt
+        │
+        ├── dashboard_chart/
+        │   ├── department_wise_employee_strength/ # Group By Department (Bar)
+        │   ├── employees_by_department/           # Group By Department (Donut)
+        │   ├── employees_by_designation/          # Group By Designation (Bar)
+        │   ├── leave_requests_by_type/            # Group By Leave Type (Bar)
+        │   └── leave_requests_by_status/          # Group By Approval Status (Donut)
         │
         ├── print_format/
         │   └── employee_id_card/                 # Table-based Jinja Print Format
@@ -194,36 +202,50 @@ cd /home/abhijit/frappe/hr-bench
 # 2. Run migrations to apply doctypes and fixtures
 bench --site hr.localhost migrate
 
-# 3. Seed assessment sample data (departments, employees, test users)
+# 3. Seed assessment sample data (departments, employees, test users, charts)
 bench --site hr.localhost execute employee_hub.setup_sample_data.seed_all_sample_data
 ```
 
-### 8.2 Testing Checklist & How to Verify Each Requirement
+### 8.2 Test Accounts & Credentials
+
+The seed script creates distinct test accounts with linked employee records for multi-user evaluation:
+
+| Account | Roles | Linked Employee Record | Password |
+| :--- | :--- | :--- | :--- |
+| **`Administrator`** | System Manager, Administrator | Full System Access | `root` |
+| **`hr_admin@sanskar.io`** | HR Admin, System Manager, Desk User | Supervisory / Approver | `admin123` |
+| **`karan@sanskar.io`** | Employee, Desk User | Karan Patel (`EMP-2026-00001`) | `employee123` |
+| **`ravi@sanskar.io`** | Employee, Desk User | Ravi Sharma (`EMP-2026-00002`) | `employee123` |
+| **`priya@sanskar.io`** | Employee, Desk User | Priya Shah (`EMP-2026-00003`) | `employee123` |
+| **`amit@sanskar.io`** | Employee, Desk User | Amit Desai (`EMP-2026-00004`) | `employee123` |
+
+### 8.3 Automated Full Verification Suite
+
+To verify all requirements (isolation, workflow, rejection prompt, resubmission, PDF layout, charts, reports) in one command:
+
+```bash
+bench --site hr.localhost execute employee_hub.test_verification.run_full_verification
+```
+
+### 8.4 Testing Checklist & How to Verify Each Requirement
 
 #### 1. Testing Employee Role Isolation (Own-Record Rule)
 - **Goal:** Verify that an employee user sees only their own leave requests and cannot submit on behalf of others.
 - **Test in UI:**
   1. Log in as `karan@sanskar.io` (Password: `employee123`).
   2. Navigate to **Leave Request** list.
-  3. Verify that only Karan's leave requests are displayed (Ravi and Priya's requests are hidden).
+  3. Verify that only Karan's leave requests are displayed (Ravi, Priya, and Amit's requests are hidden).
   4. Click **New**: verify `Employee` field defaults to Karan and cannot be altered.
   5. Verify there is **no** Submit button; only Save (Draft) is available.
 - **Automated CLI Verification:**
   ```bash
-  bench --site hr.localhost execute 'exec("""
-  import frappe
-  frappe.set_user("karan@sanskar.io")
-  requests = frappe.get_list("Leave Request", fields=["name", "employee", "owner"])
-  for r in requests:
-      assert r.owner == "karan@sanskar.io", f"Data leak! Found {r.name} belonging to {r.owner}"
-  print("PASS: Own-record rule verified; zero cross-record exposure.")
-  """)'
+  bench --site hr.localhost execute employee_hub.test_verification.test_multi_user_isolation
   ```
 
 #### 2. Testing Confirm Dialog on Workflow Approval
 - **Goal:** Verify `frappe.confirm` triggers when approving via workflow.
 - **Test in UI:**
-  1. Log in as `hradmin@sanskar.io` (Password: `admin123`) or `Administrator`.
+  1. Log in as `hr_admin@sanskar.io` (Password: `admin123`) or `Administrator`.
   2. Open any `Pending` Leave Request.
   3. Click **Actions -> Approve**.
   4. Verify the confirmation popup appears displaying the employee name, dates, total days, and leave balance deduction warning.
@@ -262,6 +284,19 @@ bench --site hr.localhost execute employee_hub.setup_sample_data.seed_all_sample
      - Employee initials / photo are aligned.
      - Blood group badge and employee details table align cleanly.
   4. Click **PDF**: verify the rendered PDF looks identical to preview.
+
+#### 6. Testing Dashboard Charts & Summary Report
+- **Goal:** Verify that bar charts and report analytics compute and display properly.
+- **Test in UI:**
+  1. Open `/app/employee-hub` Workspace:
+     - Verify Number Cards: Total Employees, Active Employees, Pending Leave Requests, Employees On Leave.
+     - Verify Bar Charts: **Leave Requests by Type** (`#8b5cf6`), **Employees by Designation** (`#f97316`), and **Department Wise Employee Strength** (`#2563eb`).
+     - Verify Donut Charts: **Employees by Department** and **Leave Requests by Status**.
+  2. Open `/app/dashboard-view/Employee Hub Dashboard`:
+     - Verify all 5 charts render seamlessly.
+  3. Open `/app/query-report/Department Wise Employee Summary`:
+     - Verify department breakdown table displays columns: Department, Total Employees, Active Employees, Inactive/Terminated, Avg Leave Balance, and Top Skill.
+     - Toggle department filter and chart type (Bar vs Donut) to ensure dynamic responsiveness.
 
 ---
 

@@ -5,6 +5,14 @@
       "label": "Department Wise Employee Strength"
     },
     {
+      "chart_name": "Leave Requests by Type",
+      "label": "Leave Requests by Type"
+    },
+    {
+      "chart_name": "Employees by Designation",
+      "label": "Employees by Designation"
+    },
+    {
       "chart_name": "Employees by Department",
       "label": "Employees by Department"
     },
@@ -13,7 +21,7 @@
       "label": "Leave Requests by Status"
     }
   ],
-  "content": "[{\"id\":\"header_1\",\"type\":\"header\",\"data\":{\"text\":\"Employee Hub HR Dashboard\",\"level\":2}},{\"id\":\"card_total\",\"type\":\"number_card\",\"data\":{\"card_name\":\"Total Employees\"}},{\"id\":\"card_active\",\"type\":\"number_card\",\"data\":{\"card_name\":\"Active Employees\"}},{\"id\":\"card_leaves\",\"type\":\"number_card\",\"data\":{\"card_name\":\"Pending Leave Requests\"}},{\"id\":\"card_onleave\",\"type\":\"number_card\",\"data\":{\"card_name\":\"Employees On Leave\"}},{\"id\":\"header_charts\",\"type\":\"header\",\"data\":{\"text\":\"Analytics & Visualizations\",\"level\":3}},{\"id\":\"chart_bar\",\"type\":\"chart\",\"data\":{\"chart_name\":\"Department Wise Employee Strength\"}},{\"id\":\"chart_dept\",\"type\":\"chart\",\"data\":{\"chart_name\":\"Employees by Department\"}},{\"id\":\"chart_leaves\",\"type\":\"chart\",\"data\":{\"chart_name\":\"Leave Requests by Status\"}},{\"id\":\"header_quick\",\"type\":\"header\",\"data\":{\"text\":\"Quick Navigation & Shortcuts\",\"level\":3}},{\"id\":\"sc_emp\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Employee Directory\"}},{\"id\":\"sc_leave\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Leave Requests\"}},{\"id\":\"sc_dept\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Departments\"}},{\"id\":\"sc_desig\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Designations\"}},{\"id\":\"sc_skill\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Skills\"}},{\"id\":\"sc_config\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Leave Configuration\"}},{\"id\":\"sc_report\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Department Summary Report\"}}]",
+  "content": "[{\"id\": \"header_1\", \"type\": \"header\", \"data\": {\"text\": \"Employee Hub HR Dashboard\", \"level\": 2}}, {\"id\": \"card_total\", \"type\": \"number_card\", \"data\": {\"card_name\": \"Total Employees\"}}, {\"id\": \"card_active\", \"type\": \"number_card\", \"data\": {\"card_name\": \"Active Employees\"}}, {\"id\": \"card_leaves\", \"type\": \"number_card\", \"data\": {\"card_name\": \"Pending Leave Requests\"}}, {\"id\": \"card_onleave\", \"type\": \"number_card\", \"data\": {\"card_name\": \"Employees On Leave\"}}, {\"id\": \"header_charts\", \"type\": \"header\", \"data\": {\"text\": \"Analytics & Visualizations\", \"level\": 3}}, {\"id\": \"chart_bar\", \"type\": \"chart\", \"data\": {\"chart_name\": \"Department Wise Employee Strength\"}}, {\"id\": \"chart_leave_type\", \"type\": \"chart\", \"data\": {\"chart_name\": \"Leave Requests by Type\"}}, {\"id\": \"chart_desig\", \"type\": \"chart\", \"data\": {\"chart_name\": \"Employees by Designation\"}}, {\"id\": \"chart_dept\", \"type\": \"chart\", \"data\": {\"chart_name\": \"Employees by Department\"}}, {\"id\": \"chart_leaves\", \"type\": \"chart\", \"data\": {\"chart_name\": \"Leave Requests by Status\"}}, {\"id\": \"header_quick\", \"type\": \"header\", \"data\": {\"text\": \"Quick Navigation & Shortcuts\", \"level\": 3}}, {\"id\": \"sc_emp\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Employee Directory\"}}, {\"id\": \"sc_leave\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Leave Requests\"}}, {\"id\": \"sc_dept\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Departments\"}}, {\"id\": \"sc_desig\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Designations\"}}, {\"id\": \"sc_skill\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Skills\"}}, {\"id\": \"sc_config\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Leave Configuration\"}}, {\"id\": \"sc_report\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Department Summary Report\"}}]",
   "creation": "2026-10-29 10:00:00.000000",
   "custom_blocks": [],
   "docstatus": 0,
