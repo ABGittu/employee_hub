@@ -218,6 +218,8 @@ The seed script creates distinct test accounts with linked employee records for 
 | **`ravi@sanskar.io`** | Employee, Desk User | Ravi Sharma (`EMP-2026-00002`) | `employee123` |
 | **`priya@sanskar.io`** | Employee, Desk User | Priya Shah (`EMP-2026-00003`) | `employee123` |
 | **`amit@sanskar.io`** | Employee, Desk User | Amit Desai (`EMP-2026-00004`) | `employee123` |
+| **`neha@sanskar.io`** | Employee, Desk User | Neha Gupta (`EMP-2026-00005`, Finance Manager) | `employee123` |
+| **`vikram@sanskar.io`** | Employee, Desk User | Vikram Singh (`EMP-2026-00006`, Operations Manager) | `employee123` |
 
 ### 8.3 Automated Full Verification Suite
 

@@ -39,6 +39,7 @@ def seed_designations():
         {"designation_name": "HR Manager", "department": "Human Resources", "level": "Manager", "is_active": 1},
         {"designation_name": "Marketing Analyst", "department": "Marketing", "level": "Mid", "is_active": 1},
         {"designation_name": "Finance Manager", "department": "Finance", "level": "Manager", "is_active": 1},
+        {"designation_name": "Operations Manager", "department": "Operations", "level": "Manager", "is_active": 1},
     ]
 
     for d in designations:
@@ -163,6 +164,40 @@ def seed_employees():
                 {"skill": "Communication", "proficiency": "Advanced", "years_of_experience": 3},
                 {"skill": "SQL", "proficiency": "Intermediate", "years_of_experience": 2},
             ]
+        },
+        {
+            "first_name": "Neha",
+            "last_name": "Gupta",
+            "employee_email": "neha@sanskar.io",
+            "phone": "+91 9876543214",
+            "date_of_birth": "1995-07-14",
+            "date_of_joining": "2022-04-01",
+            "department": "Finance",
+            "designation": "Finance Manager",
+            "employee_status": "Active",
+            "annual_leave_balance": 24,
+            "blood_group": "B+",
+            "skills": [
+                {"skill": "Accounting", "proficiency": "Expert", "years_of_experience": 6},
+                {"skill": "SQL", "proficiency": "Intermediate", "years_of_experience": 3},
+            ]
+        },
+        {
+            "first_name": "Vikram",
+            "last_name": "Singh",
+            "employee_email": "vikram@sanskar.io",
+            "phone": "+91 9876543215",
+            "date_of_birth": "1994-09-22",
+            "date_of_joining": "2021-11-15",
+            "department": "Operations",
+            "designation": "Operations Manager",
+            "employee_status": "Active",
+            "annual_leave_balance": 24,
+            "blood_group": "O+",
+            "skills": [
+                {"skill": "Leadership", "proficiency": "Advanced", "years_of_experience": 5},
+                {"skill": "Communication", "proficiency": "Expert", "years_of_experience": 7},
+            ]
         }
     ]
 
@@ -194,6 +229,8 @@ def seed_leave_requests():
         ravi = frappe.db.get_value("Employee", {"employee_email": "ravi@sanskar.io"}, "name")
         priya = frappe.db.get_value("Employee", {"employee_email": "priya@sanskar.io"}, "name")
         amit = frappe.db.get_value("Employee", {"employee_email": "amit@sanskar.io"}, "name")
+        neha = frappe.db.get_value("Employee", {"employee_email": "neha@sanskar.io"}, "name")
+        vikram = frappe.db.get_value("Employee", {"employee_email": "vikram@sanskar.io"}, "name")
 
         requests = []
         if ravi:
@@ -235,6 +272,35 @@ def seed_leave_requests():
                 "leave_type": "Casual Leave",
                 "reason": "Personal work",
                 "status": "Pending",
+            })
+        if neha:
+            requests.append({
+                "employee": neha,
+                "owner_email": "neha@sanskar.io",
+                "from_date": "2026-04-10",
+                "to_date": "2026-04-12",
+                "leave_type": "Casual Leave",
+                "reason": "Family gathering",
+                "status": "Approved",
+            })
+            requests.append({
+                "employee": neha,
+                "owner_email": "neha@sanskar.io",
+                "from_date": add_days(today(), 25),
+                "to_date": add_days(today(), 26),
+                "leave_type": "Sick Leave",
+                "reason": "Routine health checkup",
+                "status": "Pending",
+            })
+        if vikram:
+            requests.append({
+                "employee": vikram,
+                "owner_email": "vikram@sanskar.io",
+                "from_date": "2026-04-05",
+                "to_date": "2026-04-07",
+                "leave_type": "Casual Leave",
+                "reason": "Personal work",
+                "status": "Approved",
             })
 
         for req in requests:
@@ -322,6 +388,8 @@ def create_test_users():
         {"email": "ravi@sanskar.io", "first_name": "Ravi", "last_name": "Patel"},
         {"email": "priya@sanskar.io", "first_name": "Priya", "last_name": "Shah"},
         {"email": "amit@sanskar.io", "first_name": "Amit", "last_name": "Desai"},
+        {"email": "neha@sanskar.io", "first_name": "Neha", "last_name": "Gupta"},
+        {"email": "vikram@sanskar.io", "first_name": "Vikram", "last_name": "Singh"},
     ]
 
     for eu in employee_users:
@@ -361,6 +429,7 @@ def setup_dashboard_and_workspace():
             "document_type": "Employee",
             "filters_json": "[]",
             "color": "#3b82f6",
+            "is_public": 1,
         },
         {
             "name": "Active Employees",
@@ -369,6 +438,7 @@ def setup_dashboard_and_workspace():
             "document_type": "Employee",
             "filters_json": '[["Employee","employee_status","=","Active"]]',
             "color": "#10b981",
+            "is_public": 1,
         },
         {
             "name": "Pending Leave Requests",
@@ -377,6 +447,7 @@ def setup_dashboard_and_workspace():
             "document_type": "Leave Request",
             "filters_json": '[["Leave Request","approval_status","=","Pending"]]',
             "color": "#f59e0b",
+            "is_public": 1,
         },
         {
             "name": "Employees On Leave",
@@ -385,6 +456,7 @@ def setup_dashboard_and_workspace():
             "document_type": "Employee",
             "filters_json": '[["Employee","employee_status","=","On Leave"]]',
             "color": "#ec4899",
+            "is_public": 1,
         },
     ]
 
@@ -399,9 +471,14 @@ def setup_dashboard_and_workspace():
             doc.insert(ignore_permissions=True)
             print(f" [✓] Created Number Card: {c['name']}")
         else:
-            print(f" [-] Number Card already exists: {c['name']}")
+            doc = frappe.get_doc("Number Card", c["name"])
+            doc.is_public = 1
+            doc.color = c["color"]
+            doc.save(ignore_permissions=True)
+            print(f" [-] Updated Number Card: {c['name']}")
 
     # 2. Dashboard Charts
+    chart_roles = [{"role": "Employee"}, {"role": "HR Admin"}, {"role": "System Manager"}]
     charts = [
         {
             "chart_name": "Department Wise Employee Strength",
@@ -411,11 +488,11 @@ def setup_dashboard_and_workspace():
             "group_by_type": "Count",
             "type": "Bar",
             "is_standard": 1,
+            "is_public": 1,
             "module": "Employee Hub",
             "color": "#3b82f6",
             "filters_json": "[]",
-            "timespan": "Last Year",
-            "custom_options": '{"tooltipOptions": {"formatTooltipY": "d => d"}, "axisOptions": {"shortenYAxisNumbers": 0}}',
+            "roles": chart_roles,
         },
         {
             "chart_name": "Leave Requests by Type",
@@ -425,11 +502,11 @@ def setup_dashboard_and_workspace():
             "group_by_type": "Count",
             "type": "Bar",
             "is_standard": 1,
+            "is_public": 1,
             "module": "Employee Hub",
             "color": "#8b5cf6",
             "filters_json": "[]",
-            "timespan": "Last Year",
-            "custom_options": '{"tooltipOptions": {"formatTooltipY": "d => d"}, "axisOptions": {"shortenYAxisNumbers": 0}}',
+            "roles": chart_roles,
         },
         {
             "chart_name": "Employees by Designation",
@@ -439,11 +516,11 @@ def setup_dashboard_and_workspace():
             "group_by_type": "Count",
             "type": "Bar",
             "is_standard": 1,
+            "is_public": 1,
             "module": "Employee Hub",
             "color": "#f97316",
             "filters_json": "[]",
-            "timespan": "Last Year",
-            "custom_options": '{"tooltipOptions": {"formatTooltipY": "d => d"}, "axisOptions": {"shortenYAxisNumbers": 0}}',
+            "roles": chart_roles,
         },
         {
             "chart_name": "Employees by Department",
@@ -453,11 +530,11 @@ def setup_dashboard_and_workspace():
             "group_by_type": "Count",
             "type": "Donut",
             "is_standard": 1,
+            "is_public": 1,
             "module": "Employee Hub",
             "color": "#3b82f6",
             "filters_json": "[]",
-            "timespan": "Last Year",
-            "custom_options": '{"tooltipOptions": {"formatTooltipY": "d => d"}}',
+            "roles": chart_roles,
         },
         {
             "chart_name": "Leave Requests by Status",
@@ -467,28 +544,36 @@ def setup_dashboard_and_workspace():
             "group_by_type": "Count",
             "type": "Donut",
             "is_standard": 1,
+            "is_public": 1,
             "module": "Employee Hub",
             "color": "#10b981",
             "filters_json": "[]",
-            "timespan": "Last Year",
-            "custom_options": '{"tooltipOptions": {"formatTooltipY": "d => d"}}',
+            "roles": chart_roles,
         },
     ]
 
     for ch in charts:
         if not frappe.db.exists("Dashboard Chart", ch["chart_name"]):
+            roles = ch.pop("roles", [])
             doc = frappe.get_doc({
                 "doctype": "Dashboard Chart",
                 "is_standard": 1,
                 "module": "Employee Hub",
                 **ch,
             })
+            for r in roles:
+                doc.append("roles", r)
             doc.insert(ignore_permissions=True)
             print(f" [✓] Created Dashboard Chart: {ch['chart_name']}")
         else:
             doc = frappe.get_doc("Dashboard Chart", ch["chart_name"])
             doc.type = ch["type"]
-            doc.custom_options = ch.get("custom_options")
+            doc.is_public = 1
+            doc.custom_options = None
+            doc.color = ch["color"]
+            doc.set("roles", [])
+            for r in ch.get("roles", []):
+                doc.append("roles", r)
             doc.save(ignore_permissions=True)
             print(f" [✓] Updated Dashboard Chart: {ch['chart_name']}")
 
@@ -582,6 +667,10 @@ def setup_dashboard_and_workspace():
 def seed_all_sample_data():
     """Master seeding function executed via bench execute."""
     print("--- Seeding Employee Hub Sample Data ---")
+    frappe.db.delete("Custom DocPerm", {"parent": "Employee"})
+    frappe.db.delete("User Permission")
+    frappe.db.delete("Dashboard Chart", {"name": ["in", ["Leave Requests", "Leaves Taken", "Department-wise Employee Strength"]]})
+    frappe.db.delete("Dashboard Chart Link", {"chart": ["in", ["Leave Requests", "Leaves Taken", "Department-wise Employee Strength"]]})
     seed_leave_configuration()
     seed_departments()
     seed_designations()
