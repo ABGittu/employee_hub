@@ -1,0 +1,231 @@
+{
+  "actions": [],
+  "allow_rename": 0,
+  "autoname": "naming_series:",
+  "creation": "2026-10-29 10:00:00.000000",
+  "doctype": "DocType",
+  "engine": "InnoDB",
+  "field_order": [
+    "basic_info_tab",
+    "naming_series",
+    "first_name",
+    "last_name",
+    "full_name",
+    "col_break_1",
+    "profile_photo",
+    "employee_status",
+    "annual_leave_balance",
+    "employment_section",
+    "department",
+    "designation",
+    "col_break_2",
+    "reporting_manager",
+    "date_of_joining",
+    "date_of_birth",
+    "contact_section",
+    "employee_email",
+    "phone",
+    "col_break_3",
+    "address",
+    "skills_section",
+    "skills"
+  ],
+  "fields": [
+    {
+      "fieldname": "basic_info_tab",
+      "fieldtype": "Section Break",
+      "label": "Personal Information"
+    },
+    {
+      "default": "EMP-.YYYY.-.#####",
+      "fieldname": "naming_series",
+      "fieldtype": "Select",
+      "label": "Series",
+      "no_copy": 1,
+      "options": "EMP-.YYYY.-.#####",
+      "reqd": 1,
+      "set_only_once": 1
+    },
+    {
+      "fieldname": "first_name",
+      "fieldtype": "Data",
+      "label": "First Name",
+      "reqd": 1
+    },
+    {
+      "fieldname": "last_name",
+      "fieldtype": "Data",
+      "label": "Last Name",
+      "reqd": 1
+    },
+    {
+      "fieldname": "full_name",
+      "fieldtype": "Data",
+      "in_global_search": 1,
+      "in_list_view": 1,
+      "label": "Full Name",
+      "read_only": 1
+    },
+    {
+      "fieldname": "col_break_1",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "profile_photo",
+      "fieldtype": "Attach Image",
+      "label": "Profile Photo"
+    },
+    {
+      "default": "Active",
+      "fieldname": "employee_status",
+      "fieldtype": "Select",
+      "in_list_view": 1,
+      "in_standard_filter": 1,
+      "label": "Status",
+      "options": "Active\nInactive\nOn Leave\nTerminated",
+      "read_only": 1
+    },
+    {
+      "default": "24",
+      "fieldname": "annual_leave_balance",
+      "fieldtype": "Int",
+      "in_list_view": 1,
+      "label": "Annual Leave Balance",
+      "read_only": 1
+    },
+    {
+      "fieldname": "employment_section",
+      "fieldtype": "Section Break",
+      "label": "Employment Details"
+    },
+    {
+      "fieldname": "department",
+      "fieldtype": "Link",
+      "in_list_view": 1,
+      "in_standard_filter": 1,
+      "label": "Department",
+      "options": "Department",
+      "reqd": 1
+    },
+    {
+      "fieldname": "designation",
+      "fieldtype": "Link",
+      "in_list_view": 1,
+      "in_standard_filter": 1,
+      "label": "Designation",
+      "options": "Designation",
+      "reqd": 1
+    },
+    {
+      "fieldname": "col_break_2",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "reporting_manager",
+      "fieldtype": "Link",
+      "label": "Reporting Manager",
+      "options": "Employee"
+    },
+    {
+      "fieldname": "date_of_joining",
+      "fieldtype": "Date",
+      "in_list_view": 1,
+      "label": "Date of Joining",
+      "reqd": 1
+    },
+    {
+      "fieldname": "date_of_birth",
+      "fieldtype": "Date",
+      "label": "Date of Birth",
+      "reqd": 1
+    },
+    {
+      "fieldname": "contact_section",
+      "fieldtype": "Section Break",
+      "label": "Contact Details"
+    },
+    {
+      "fieldname": "employee_email",
+      "fieldtype": "Data",
+      "in_list_view": 1,
+      "label": "Employee Email",
+      "options": "Email",
+      "reqd": 1,
+      "unique": 1
+    },
+    {
+      "fieldname": "phone",
+      "fieldtype": "Data",
+      "label": "Phone Number",
+      "options": "Phone"
+    },
+    {
+      "fieldname": "col_break_3",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "address",
+      "fieldtype": "Small Text",
+      "label": "Residential Address"
+    },
+    {
+      "fieldname": "skills_section",
+      "fieldtype": "Section Break",
+      "label": "Employee Skills"
+    },
+    {
+      "fieldname": "skills",
+      "fieldtype": "Table",
+      "label": "Skills",
+      "options": "Employee Skill"
+    }
+  ],
+  "image_field": "profile_photo",
+  "links": [],
+  "modified": "2026-10-29 10:00:00.000000",
+  "modified_by": "Administrator",
+  "module": "Employee Hub",
+  "name": "Employee",
+  "naming_rule": "By \"Naming Series\" field",
+  "owner": "Administrator",
+  "permissions": [
+    {
+      "create": 1,
+      "delete": 1,
+      "email": 1,
+      "export": 1,
+      "print": 1,
+      "read": 1,
+      "report": 1,
+      "role": "System Manager",
+      "share": 1,
+      "write": 1
+    },
+    {
+      "create": 1,
+      "delete": 1,
+      "email": 1,
+      "export": 1,
+      "print": 1,
+      "read": 1,
+      "report": 1,
+      "role": "HR Admin",
+      "share": 1,
+      "write": 1
+    },
+    {
+      "email": 1,
+      "export": 0,
+      "print": 1,
+      "read": 1,
+      "report": 1,
+      "role": "Employee"
+    }
+  ],
+  "search_fields": "full_name,employee_email,department,designation",
+  "sort_field": "modified",
+  "sort_order": "DESC",
+  "states": [],
+  "title_field": "full_name",
+  "track_changes": 1
+}
